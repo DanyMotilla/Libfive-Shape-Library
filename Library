@@ -1,0 +1,80 @@
+(set-bounds! [-10 -10 -10] [10 10 10])
+(set-quality! 11)
+(set-resolution! 20)
+
+;(lambda-shape (x y z)
+;  (- (sqrt (+ (* x x) (* y y) (* z z))) 1))
+
+; Schwarz P ("Primitive")
+;(lambda-shape (x y z)
+;  (+(cos x) (cos y) (cos z) ))
+
+; Schwarz D ("Diamond") or F surface
+;(lambda-shape (x y z)
+;  (-(*(cos x)(cos y)(cos z))
+;    (*(sin x)(sin y)(sin z))))
+
+;Neovius Surface
+(lambda-shape (x y z)
+    (+ (* 3 (+ (cos x) (cos y) (cos z)))
+       (* 4 (cos x) (cos y) (cos z))))
+
+;(lambda-shape (x y z)
+;    (+ (* (sin x) (cos y))
+;       (* (sin y) (cos z))
+;       (* (sin z) (cos x))))
+
+;(define alpha 1.0)  ; scaling factor for x
+;(define beta 0.5)   ; scaling factor for y
+;(define gamma 2.0)  ; scaling factor for z
+
+;(lambda-shape (x y z)
+;    (+ (* (sin (* alpha x)) (cos (* beta y)))
+;       (* (sin (* beta y)) (cos (* gamma z)))
+;       (* (sin (* gamma z)) (cos (* alpha x)))))
+
+
+;(lambda-shape (x y z)
+;  (let ((r (sqrt (+ (square x) (square y)))))
+;    (max (- 5 r) (- r 6))))
+
+
+;(lambda-shape (x y z)
+;  (- 
+;    (+ 
+;      (* 3 y (- (* y y) (* 3 x x)) (- 1 (* z z))) 
+;      (expt (+ (* x x) (* y y)) 3))
+;    (* (- (* 9 (* z z)) 1) (- 1 (* z z)))))
+
+;(lambda-shape (x y z)
+;  (* 
+;    (- 
+;      (expt 
+;        (+ 
+;          (expt (- x 2.2) 2)  ; Assuming a = 1 for simplicity
+;          (expt (+ z 1) 2)
+;          (expt y 2)
+;          0.5
+;          -0.01)
+;        2)
+;      (* 2 
+;        (+ 
+;          (expt (- x 2.2) 2)
+;          (expt (+ z 1) 2))))
+;    (- 
+;      (+ 
+;        (* 1/8 (expt x 2)) 
+;        (* 1/8 (expt y 2)) 
+;        (expt (+ z 2) 2)) 
+;      0.1)
+;    (- 
+;      (expt 
+;        (+ 
+;          (expt (+ z 1) 2) 
+;          (* 10 (expt x 2)) 
+;          (* 10 (expt y 2)) 
+;          19) 
+;        2) 
+;      (* 800 
+;        (+ (expt x 2) (expt y 2))))
+;    -1))
